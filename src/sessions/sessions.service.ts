@@ -20,6 +20,9 @@ export class SessionsService {
   async findAll(): Promise<Session[]> {
     const options: FindOneOptions<Session> = {
       relations: ['pixels'],
+      order: {
+        createdAt: 'DESC',
+      },
     };
     const foundSessions = await this.sessionRepository.find(options);
 
